@@ -1,0 +1,149 @@
+2024/07/17 13:01:58 Clipboard changed: ~
+2024/07/17 13:02:03 Clipboard changed:  that continu
+2024/07/17 13:02:49 Clipboard changed: ere's a Go program that continuously monitors the system's clipboard and logs the content whenever it changes:
+2024/07/17 13:03:11 Clipboard changed: 80745
+2024/07/17 13:03:16 Clipboard changed: 
+2024/07/17 13:03:17 Clipboard changed: 80745
+2024/07/17 13:03:30 Clipboard changed: 
+2024/07/17 13:03:31 Clipboard changed: ttys004
+2024/07/17 13:03:32 Clipboard changed: ~                                                                                                                                                                                           │80765 ttys004    0:00.32 /var/folders/cq/t7c1z_s90qj0knbdg8nfzc480000gn/T/go-build1156565533/b001/exe/main
+2024/07/17 13:03:37 Clipboard changed: ~                                                                                                                                                                                           │80765 ttys004    0:00.32 /var/folders/cq/t7c1z_s90qj0knbdg8nfzc480000gn/T/go-build1156565533/b001/exe/main
+2024/07/17 13:04:06 Clipboard changed: r := log.New(file, ""
+2024/07/17 13:04:07 Clipboard changed: r := log.New(file, ""
+2024/07/17 13:04:11 Clipboard changed: sigs := make(chan os.Signal, 1)
+2024/07/17 13:04:11 Clipboard changed: sigs := make(chan os.Signal, 1)
+2024/07/17 13:04:33 Clipboard changed: func main() {
+	var lastContent string
+
+	// Create or open log file
+	file, err := os.OpenFile("clipboard.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer file.Close()
+
+	logger := log.New(file, "", log.LstdFlags)
+
+	// Setup signal catching
+	sigs := make(chan os.Signal, 1)
+	signal.Notify(sigs, syscall.SIGINT, syscall.SIGTERM)
+
+	// Monitor clipboard
+	ticker := time.NewTicker(1 * time.Second)
+	defer ticker.Stop()
+
+	fmt.Println("Monitoring clipboard. Press Ctrl+C to stop.")
+	for {
+		select {
+		case <-ticker.C:
+			content, err := clipboard.ReadAll()
+			if err != nil {
+				log.Printf("Error reading clipboard: %v", err)
+				continue
+			}
+
+			if content != lastContent {
+				logger.Printf("Clipboard changed: %s", content)
+				lastContent = content
+			}
+
+		case sig := <-sigs:
+			fmt.Printf("\nReceived signal %s. Exiting...\n", sig)
+			return
+		}
+	}
+}
+2024/07/17 13:04:33 Clipboard changed: func main() {
+	var lastContent string
+
+	// Create or open log file
+	file, err := os.OpenFile("clipboard.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer file.Close()
+
+	logger := log.New(file, "", log.LstdFlags)
+
+	// Setup signal catching
+	sigs := make(chan os.Signal, 1)
+	signal.Notify(sigs, syscall.SIGINT, syscall.SIGTERM)
+
+	// Monitor clipboard
+	ticker := time.NewTicker(1 * time.Second)
+	defer ticker.Stop()
+
+	fmt.Println("Monitoring clipboard. Press Ctrl+C to stop.")
+	for {
+		select {
+		case <-ticker.C:
+			content, err := clipboard.ReadAll()
+			if err != nil {
+				log.Printf("Error reading clipboard: %v", err)
+				continue
+			}
+
+			if content != lastContent {
+				logger.Printf("Clipboard changed: %s", content)
+				lastContent = content
+			}
+
+		case sig := <-sigs:
+			fmt.Printf("\nReceived signal %s. Exiting...\n", sig)
+			return
+		}
+	}
+}
+2024/07/17 13:10:58 Clipboard changed: func main() {
+	var lastContent string
+
+	// Create or open log file
+	file, err := os.OpenFile("clipboard.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer file.Close()
+
+	logger := log.New(file, "", log.LstdFlags)
+
+	// Setup signal catching
+	sigs := make(chan os.Signal, 1)
+	signal.Notify(sigs, syscall.SIGINT, syscall.SIGTERM)
+
+	// Monitor clipboard
+	ticker := time.NewTicker(1 * time.Second)
+	defer ticker.Stop()
+
+	fmt.Println("Monitoring clipboard. Press Ctrl+C to stop.")
+	for {
+		select {
+		case <-ticker.C:
+			content, err := clipboard.ReadAll()
+			if err != nil {
+				log.Printf("Error reading clipboard: %v", err)
+				continue
+			}
+
+			if content != lastContent {
+				logger.Printf("Clipboard changed: %s", content)
+				lastContent = content
+			}
+
+		case sig := <-sigs:
+			fmt.Printf("\nReceived signal %s. Exiting...\n", sig)
+			return
+		}
+	}
+}
+2024/07/17 13:11:31 Clipboard changed: al.Notify(
+2024/07/17 13:11:57 Clipboard changed: 80765
+2024/07/17 13:12:38 Clipboard changed:  os.OpenFile("clipboard.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)                                                                                              │
+   17     if err != nil {
+2024/07/17 13:12:41 Clipboard changed: Monitorin
+2024/07/17 13:12:43 Clipboard changed: lipboard. Pr
+2024/07/17 13:12:45 Clipboard changed: ify(sigs, syscall.SIGI
+2024/07/17 13:12:46 Clipboard changed: 
+2024/07/17 13:12:47 Clipboard changed:                                                                                                                                            │
+   22         for {                                                                                                                                                                         │
+   21             select {                                                                                                                                                                  │
+   20             case <-ticker.C:
